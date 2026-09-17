@@ -3,6 +3,20 @@ import { describe, expect, it } from "vitest";
 import { app } from "../src/app";
 
 describe("REST API", () => {
+  it("describes the service at the root URL", async () => {
+    const response = await request(app).get("/");
+    expect(response.status).toBe(200);
+    expect(response.body).toMatchObject({
+      name: "GenX Backend Developer Test 2026",
+      status: "running",
+      endpoints: {
+        health: "GET /health",
+        schedule: "POST /schedule/generate",
+        invoice: "POST /invoice/calc"
+      }
+    });
+  });
+
   it("reports a healthy process for deployment checks", async () => {
     const response = await request(app).get("/health");
     expect(response.status).toBe(200);
