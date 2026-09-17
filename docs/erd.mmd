@@ -1,10 +1,3 @@
-# ERD đề xuất
-
-File hình để mở hoặc nộp trực tiếp: [PNG](erd.png) · [SVG](erd.svg). [Mã Mermaid](erd.mmd) dùng để sửa và xuất lại sơ đồ.
-
-`COURSE_CLASS` là entity **Class** trong đề; Mermaid dùng tên này vì `CLASS` là từ khóa của cú pháp sơ đồ.
-
-```mermaid
 erDiagram
     USER {
         uuid id PK
@@ -85,17 +78,3 @@ erDiagram
     INVOICE ||--o{ PAYMENT : paid_by
     USER |o--o{ SERVICE_REQUEST : requests
     USER |o--o{ SERVICE_REQUEST : handles
-```
-
-## Lý do thiết kế
-
-1. `Course` chứa thông tin khóa chung; `Class` là lớp cụ thể có lịch, giáo viên và sĩ số riêng.
-2. `ScheduleSession` lưu từng buổi để theo dõi lịch và buổi bị hủy, thay vì chỉ lưu ngày kết thúc.
-3. `Enrollment` nối `User` học viên với `Class`, đồng thời giữ trạng thái đăng ký; cần ràng buộc duy nhất `(student_id, class_id)`.
-4. `Invoice` gắn với lượt đăng ký để một khóa đóng theo tháng có thể có nhiều kỳ thu; `billing_month` để trống cho gói trọn khóa.
-5. `Payment` tách khỏi `Invoice` vì một hóa đơn có thể được thanh toán qua nhiều giao dịch.
-6. Truy cập link học có thể tính từ `Enrollment` và hóa đơn quá hạn; không cần lưu một cờ dễ lệch dữ liệu.
-7. `ServiceRequest` cho phép khách chưa có tài khoản bằng `contact_name` và `contact_email`; `customer_user_id` được để trống trong trường hợp đó.
-8. Các khóa ngoại từ lớp và yêu cầu dịch vụ đến nhân sự phải kiểm tra role tương ứng ở tầng nghiệp vụ.
-
-ERD là thiết kế dữ liệu cho Phần A. Bài code chỉ triển khai hai nghiệp vụ và hai endpoint được yêu cầu ở Phần B/C; chưa có cơ sở dữ liệu.

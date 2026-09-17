@@ -1,6 +1,6 @@
 # GenX Backend Developer Test 2026
 
-Bài làm gồm ERD, danh sách API, bộ tạo lịch học, bộ tính hóa đơn và hai REST endpoint. [ERD](docs/erd.md) và [API list](docs/api-list.md) nằm trong `/docs`.
+Bài làm gồm ERD, danh sách API, bộ tạo lịch học, bộ tính hóa đơn và hai REST endpoint. [ERD](docs/erd.md), [ảnh ERD PNG](docs/erd.png) và [API list](docs/api-list.md) nằm trong `/docs`.
 
 ## Tech stack
 
@@ -26,6 +26,10 @@ npm start
 ```
 
 `npm start` chạy code đã build trong `dist`; hãy chạy `npm run build` trước.
+
+### Thử API bằng Postman
+
+Chạy `npm run dev`, rồi trong Postman chọn **Import → Files** và chọn [`docs/GenX Backend Test.postman_collection.json`](docs/GenX%20Backend%20Test.postman_collection.json). Collection có sẵn hai request POST, URL `http://localhost:3000` và phép kiểm tra response. Bấm **Send** cho từng request; tab **Test Results** cho biết phép kiểm tra đạt hay lỗi. Không cần dùng CMD để gọi API.
 
 ## Cấu trúc
 
