@@ -35,7 +35,9 @@ Chạy `npm run dev`, rồi trong Postman chọn **Import → Files** và chọn
 
 ## Triển khai Render
 
-File [`render.yaml`](render.yaml) khai báo Web Service gói Free, build bằng `npm ci && npm run build`, chạy bằng `npm start` và kiểm tra `/health`. Ứng dụng đọc cổng từ biến môi trường `PORT` do Render cung cấp. Sau khi deploy, đổi biến `baseUrl` trong Postman collection thành URL `https://<tên-dịch-vụ>.onrender.com` để thử hai API qua mạng.
+File [`render.yaml`](render.yaml) khai báo Web Service gói Free, build bằng `npm ci && npm run build`, chạy bằng `npm start` và kiểm tra `/health`. Ứng dụng đọc cổng từ biến môi trường `PORT` do Render cung cấp.
+
+**Bản chạy:** [Kiểm tra `/health`](https://genx-backend-test-2026.onrender.com/health). Để thử hai API qua mạng, đổi biến `baseUrl` trong Postman collection thành `https://genx-backend-test-2026.onrender.com`.
 
 ## Cấu trúc
 
