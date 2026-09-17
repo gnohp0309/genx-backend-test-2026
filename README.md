@@ -18,6 +18,8 @@ npm run dev
 
 Server mặc định ở `http://localhost:3000`. Có thể đặt biến môi trường `PORT` để đổi cổng.
 
+`GET /health` trả `{ "status": "ok" }` để dịch vụ triển khai kiểm tra trạng thái.
+
 ```bash
 npm test
 npm run typecheck
@@ -30,6 +32,10 @@ npm start
 ### Thử API bằng Postman
 
 Chạy `npm run dev`, rồi trong Postman chọn **Import → Files** và chọn [`docs/GenX Backend Test.postman_collection.json`](docs/GenX%20Backend%20Test.postman_collection.json). Collection có sẵn hai request POST, URL `http://localhost:3000` và phép kiểm tra response. Bấm **Send** cho từng request; tab **Test Results** cho biết phép kiểm tra đạt hay lỗi. Không cần dùng CMD để gọi API.
+
+## Triển khai Render
+
+File [`render.yaml`](render.yaml) khai báo Web Service gói Free, build bằng `npm ci && npm run build`, chạy bằng `npm start` và kiểm tra `/health`. Ứng dụng đọc cổng từ biến môi trường `PORT` do Render cung cấp. Sau khi deploy, đổi biến `baseUrl` trong Postman collection thành URL `https://<tên-dịch-vụ>.onrender.com` để thử hai API qua mạng.
 
 ## Cấu trúc
 

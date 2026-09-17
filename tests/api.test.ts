@@ -3,6 +3,12 @@ import { describe, expect, it } from "vitest";
 import { app } from "../src/app";
 
 describe("REST API", () => {
+  it("reports a healthy process for deployment checks", async () => {
+    const response = await request(app).get("/health");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({ status: "ok" });
+  });
+
   it("returns a generated schedule", async () => {
     const response = await request(app).post("/schedule/generate").send({
       startDate: "2026-01-01",
