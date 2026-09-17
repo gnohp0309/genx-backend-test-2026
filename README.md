@@ -16,7 +16,7 @@ npm install
 npm run dev
 ```
 
-Server mặc định ở `http://localhost:3000`. Có thể đặt biến môi trường `PORT` để đổi cổng.
+Server mặc định ở `http://localhost:3000`.
 
 `GET /health` trả `{ "status": "ok" }` để dịch vụ triển khai kiểm tra trạng thái.
 
@@ -31,7 +31,7 @@ npm start
 
 ### Thử API bằng Postman
 
-Chạy `npm run dev`, rồi trong Postman chọn **Import → Files** và chọn [`docs/GenX Backend Test.postman_collection.json`](docs/GenX%20Backend%20Test.postman_collection.json). Collection có sẵn hai request POST, URL `http://localhost:3000` và phép kiểm tra response. Bấm **Send** cho từng request; tab **Test Results** cho biết phép kiểm tra đạt hay lỗi. Không cần dùng CMD để gọi API.
+Chạy `npm run dev`, rồi trong Postman chọn **Import → Files** và chọn [`docs/GenX Backend Test.postman_collection.json`](docs/GenX%20Backend%20Test.postman_collection.json). Collection có sẵn hai request POST, URL `http://localhost:3000` và phép kiểm tra response. Bấm **Send** cho từng request; tab **Test Results** cho biết phép kiểm tra đạt hay lỗi. 
 
 ## Triển khai Render
 
@@ -102,8 +102,8 @@ Lỗi server ngoài dự kiến nhận HTTP 500 với thông báo chung, không 
 ## Quy tắc và giả định
 
 - Dùng **UTC** thống nhất cho tính toán ngày. Input/output chỉ dùng `YYYY-MM-DD`; ngày không tồn tại như `2026-02-30` bị từ chối.
-- `startDate` được tính **inclusive**. `classWeekdays`: `0=Mon` đến `6=Sun`; thứ trùng được loại bỏ và sắp tăng trước khi tạo lịch.
-- `holidayRanges` nghỉ **inclusive cả ngày bắt đầu và ngày kết thúc**. Ngày vừa có trong `holidays` vừa thuộc một range vẫn chỉ là ngày nghỉ.
+- `startDate` được tính *inclusive*. `classWeekdays`: `0=Mon` đến `6=Sun`; thứ trùng được loại bỏ và sắp tăng trước khi tạo lịch.
+- `holidayRanges` nghỉ *inclusive cả ngày bắt đầu và ngày kết thúc*. Ngày vừa có trong `holidays` vừa thuộc một range vẫn chỉ là ngày nghỉ.
 - `totalClasses` là số nguyên dương; `classWeekdays` không được rỗng; range có ngày bắt đầu sau ngày kết thúc bị từ chối.
 - `MONTHLY` cần `months` là số nguyên 1–3. `FULL_COURSE` không cần `months`; nếu được truyền, giá trị này không tham gia tính toán.
 - `promoCode` nhận `SAVE10`, `FLAT50K` hoặc `null`; mã khác bị từ chối. Giảm 10% được làm tròn xuống; giảm giá không vượt `subtotal`.
